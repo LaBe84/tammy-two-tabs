@@ -4,7 +4,7 @@
 
 | Project | State | Outcome | Canonical version | Review window | Owner | Next move | Risks / dependencies |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| _Add project_ | Exploring |  |  |  |  |  |  |
+| Lifeline foundation e-learning | Decided / building | Six foundation e-learning modules aligned to the six-week counsellor induction programme | v0.1, authoring blueprint | Before service governance sign-off | Tammy Two Tabs / specialist authors | Draft module blueprints and consolidate source checks | Local SOPs, CIMS build details, clinical governance approval |
 
 ## Triage for a new request
 
