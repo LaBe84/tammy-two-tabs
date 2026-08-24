@@ -1,6 +1,6 @@
 # Tammy shared programme-intelligence system — v1.0
 
-**Status:** Implementation specification. Phases 1–4 are implemented: this document, read-only Notion retrieval, acceptance tests 1–3, and structured proposed contributions (see [`contribution-protocol.md`](contribution-protocol.md)). Phases 5–8 (write-back, human-authority/failure/duplication tests, Perplexity ingestion, register consolidation) are not yet built.
+**Status:** Implementation specification. Phases 1–5 are implemented: this document, read-only Notion retrieval, acceptance tests 1–3, structured proposed contributions (see [`contribution-protocol.md`](contribution-protocol.md)), and controlled low-risk write-back (see [`write-back-protocol.md`](write-back-protocol.md)). Phases 6–8 (human-authority/failure/duplication tests at scale, Perplexity ingestion, register consolidation) are not yet built.
 
 ## Purpose
 
@@ -131,7 +131,7 @@ Notion being shared memory does not mean every connected AI receives every recor
 | 2 | Configure read-only Notion retrieval for the Live Work Register, Source Register, and Overlap Map. | Done |
 | 3 | Run acceptance tests 1–3 (Notion retrieval, source authority, overlap). | Done — see decision log entry for results |
 | 4 | Implement structured proposed contributions. | Done — see [`contribution-protocol.md`](contribution-protocol.md) and [`phase-4-acceptance-tests.md`](phase-4-acceptance-tests.md) |
-| 5 | Implement low-risk write-back (consequential changes remain proposed). | Not started |
+| 5 | Implement low-risk write-back (consequential changes remain proposed). | Done — see [`write-back-protocol.md`](write-back-protocol.md) and [`phase-5-acceptance-tests.md`](phase-5-acceptance-tests.md) |
 | 6 | Run human-authority, failure and duplication tests. | Not started |
 | 7 | Connect/test Perplexity contribution ingestion. | Not started |
 | 8 | Review `project-register.md` and `decision-log.md` for duplication against Notion. | Not started |
