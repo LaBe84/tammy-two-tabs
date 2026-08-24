@@ -1,5 +1,7 @@
 # Tammy's working briefing
 
+> **As of v1 (Phase 8):** current picture now comes from a fresh, bounded Notion retrieval at session start (Live Work Register, plus Source Register/Overlap Map where relevant) — see [`../specifications/shared-programme-intelligence-system.md`](../specifications/shared-programme-intelligence-system.md). This file's "Current picture" below is a historical snapshot from before that integration, not a live source; do not treat it as current.
+
 ## Current picture
 
 - **Live:** None.
