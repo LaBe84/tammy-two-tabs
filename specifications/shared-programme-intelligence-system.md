@@ -1,6 +1,6 @@
 # Tammy shared programme-intelligence system — v1.0
 
-**Status:** Implementation specification. Phases 1–5 are implemented: this document, read-only Notion retrieval, acceptance tests 1–3, structured proposed contributions (see [`contribution-protocol.md`](contribution-protocol.md)), and controlled low-risk write-back (see [`write-back-protocol.md`](write-back-protocol.md)). Phases 6–8 (human-authority/failure/duplication tests at scale, Perplexity ingestion, register consolidation) are not yet built.
+**Status:** Implementation specification. Phases 1–7 are implemented: this document, read-only Notion retrieval, acceptance tests 1–3, structured proposed contributions (see [`contribution-protocol.md`](contribution-protocol.md)), controlled low-risk write-back (see [`write-back-protocol.md`](write-back-protocol.md)), full-system regression testing (Phase 6 — 17 tests plus all 18 regression invariants, run and reported directly; no repository file, as no code change was required), and Perplexity ingestion (see [`perplexity-ingestion-protocol.md`](perplexity-ingestion-protocol.md) and [`phase-7-acceptance-tests.md`](phase-7-acceptance-tests.md)). Phase 8 (register consolidation/hardening) is not yet built.
 
 ## Purpose
 
@@ -132,8 +132,8 @@ Notion being shared memory does not mean every connected AI receives every recor
 | 3 | Run acceptance tests 1–3 (Notion retrieval, source authority, overlap). | Done — see decision log entry for results |
 | 4 | Implement structured proposed contributions. | Done — see [`contribution-protocol.md`](contribution-protocol.md) and [`phase-4-acceptance-tests.md`](phase-4-acceptance-tests.md) |
 | 5 | Implement low-risk write-back (consequential changes remain proposed). | Done — see [`write-back-protocol.md`](write-back-protocol.md) and [`phase-5-acceptance-tests.md`](phase-5-acceptance-tests.md) |
-| 6 | Run human-authority, failure and duplication tests. | Not started |
-| 7 | Connect/test Perplexity contribution ingestion. | Not started |
+| 6 | Run human-authority, failure and duplication tests (full-system regression: 17 tests, 18 invariants). | Done — reported directly (no repository file; no code change required) |
+| 7 | Connect/test Perplexity contribution ingestion. | Done — see [`perplexity-ingestion-protocol.md`](perplexity-ingestion-protocol.md) and [`phase-7-acceptance-tests.md`](phase-7-acceptance-tests.md) |
 | 8 | Review `project-register.md` and `decision-log.md` for duplication against Notion. | Not started |
 
-Write-back is intentionally not implemented in this phase. `project-register.md`, `decision-log.md`, and `version-history.md` are not retired or restructured until retrieval and write-back are both proven.
+`project-register.md`, `decision-log.md`, and `version-history.md` are not retired or restructured until Phase 8 explicitly reviews them — write-back is proven (Phases 5–7) but consolidation is deliberately still out of scope.
