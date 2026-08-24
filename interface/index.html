@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tammy — Programme intelligence</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-group">
+        <div class="mark">T</div>
+        <div>
+          <div class="brand">TAMMY</div>
+          <div class="strap">Lifeline programme intelligence</div>
+        </div>
+      </div>
+      <div class="connections" aria-label="Connections">
+        <span>Notion <i></i></span>
+        <span>Perplexity <i></i></span>
+        <span>OpenAI <i></i></span>
+        <button class="ghost">Settings</button>
+        <button class="avatar" aria-label="Profile">LB</button>
+      </div>
+    </header>
+
+    <aside class="left-rail">
+      <nav class="summary-nav">
+        <button class="summary-card active"><span class="icon">⌂</span><span><strong>Today</strong><small>4 active work</small></span><b>4</b></button>
+        <button class="summary-card"><span class="icon">☑</span><span><strong>Decisions needed</strong><small>Awaiting your judgement</small></span><b>2</b></button>
+        <button class="summary-card"><span class="icon">△</span><span><strong>Conflicts / overlaps</strong><small>Requires review</small></span><b>1</b></button>
+      </nav>
+
+      <div class="section-label">RECENT WORK</div>
+      <div id="recentWork" class="work-list">
+        <button class="work-item active" data-work="CARE Log & Secondary Assessment"><span>▣</span><div><strong>CARE Log & Secondary Assessment</strong><small>Active · 2h ago</small></div><em>›</em></button>
+        <button class="work-item" data-work="Lifeline Induction"><span>◇</span><div><strong>Lifeline Induction</strong><small>Active · 1d ago</small></div></button>
+        <button class="work-item" data-work="CRG Criteria Refinement"><span>⚖</span><div><strong>CRG Criteria Refinement</strong><small>Active · 2d ago</small></div></button>
+        <button class="work-item" data-work="Interpreter Alert Visibility"><span>◔</span><div><strong>Interpreter Alert Visibility</strong><small>On hold · 3d ago</small></div></button>
+        <button class="work-item" data-work="Workforce & Capacity Pilot"><span>◎</span><div><strong>Workforce & Capacity Pilot</strong><small>Active · 4d ago</small></div></button>
+      </div>
+      <button class="view-all">＋ View all work <span>›</span></button>
+    </aside>
+
+    <main class="workspace">
+      <section class="hero">
+        <h1>Good evening, Lee</h1>
+        <p>What shall we work on?</p>
+        <form id="tammyForm" class="ask-box">
+          <input id="tammyInput" autocomplete="off" placeholder="Ask Tammy anything about Lifeline…" />
+          <button type="submit" aria-label="Ask Tammy">➤</button>
+        </form>
+      </section>
+
+      <section class="action-grid" aria-label="Modes">
+        <button class="mode active" data-mode="Analyse"><span>⌕</span><strong>Analyse</strong><small>Deep dive into a specific issue</small></button>
+        <button class="mode" data-mode="Compare"><span>∞</span><strong>Compare</strong><small>Compare documents, work or options</small></button>
+        <button class="mode" data-mode="Challenge"><span>ϟ</span><strong>Challenge</strong><small>Test assumptions, find gaps or risk</small></button>
+        <button class="mode" data-mode="Decide"><span>✓</span><strong>Decide</strong><small>Support decisions with evidence</small></button>
+      </section>
+
+      <section class="tammy-view">
+        <div class="eyebrow">✦ TAMMY'S VIEW</div>
+        <article class="judgement-card">
+          <h2 id="judgementTitle">The issue isn’t the two documents. It’s the gateway and the reasoning sequence between them.</h2>
+          <p id="judgementBody">CARE captures the live contact and immediate reasoning well. The Secondary Clinical Assessment adds useful depth when change or uncertainty remains after initial engagement. The current gateway is present but could be more explicit and consistent.</p>
+          <button class="inline-link" id="expandJudgement">View full judgement ›</button>
+        </article>
+
+        <div class="insight-grid">
+          <button class="insight"><span>▤</span><strong>Evidence</strong><small>6 sources used<br/>3 primary · 3 secondary</small><em>View evidence ›</em></button>
+          <button class="insight"><span>↗</span><strong>What changed</strong><small>2 significant changes<br/>since last review</small><em>View changes ›</em></button>
+          <button class="insight warn"><span>△</span><strong>Contradictions</strong><small>2 overlaps<br/>1 potential contradiction</small><em>View details ›</em></button>
+          <button class="insight"><span>?</span><strong>Decision needed</strong><small>3 matters need<br/>your judgement</small><em>View decisions ›</em></button>
+        </div>
+      </section>
+    </main>
+
+    <aside class="context-rail">
+      <div class="context-title">CONTEXT: WHAT TAMMY IS USING</div>
+      <section class="context-card">
+        <div class="context-card-head"><strong>▣ Work items in focus</strong><span>2</span></div>
+        <div class="focus-row"><i></i><div><b>CARE Log (v2) — Working draft</b><small>Updated 2026-08-24</small></div><em>WORKING DRAFT</em></div>
+        <div class="focus-row"><i></i><div><b>Secondary Clinical Assessment (v1)</b><small>Updated 2026-08-24</small></div><em>WORKING DRAFT</em></div>
+      </section>
+
+      <section class="context-card">
+        <div class="context-card-head"><strong>▤ Sources Tammy is using</strong><span>6</span></div>
+        <ul class="sources">
+          <li><span>Lifeline foundation e-learning — Week 3 (PORF/CASE)</span><b>Primary (Internal)</b></li>
+          <li><span>CARE Log — Feedback & iterations</span><b>Primary (Internal)</b></li>
+          <li><span>Secondary Assessment — Draft</span><b>Primary (Internal)</b></li>
+          <li><span>NCISH: Contact & Risk Formulation</span><b class="secondary">External</b></li>
+          <li><span>NICE: Safety planning in crisis</span><b class="secondary">External</b></li>
+          <li><span>Crisis Call Log Structures — Evidence scan</span><b class="secondary">Secondary</b></li>
+        </ul>
+        <button class="text-link">View all sources ›</button>
+      </section>
+
+      <section class="context-card">
+        <div class="context-card-head"><strong>? Overlap & conflicts</strong><span>2</span></div>
+        <p class="conflict"><i></i><b>Overlap:</b> CARE triggers vs Secondary gateway</p>
+        <p class="conflict danger"><i></i><b>Potential contradiction:</b> depth of formulation in CARE vs Secondary</p>
+        <button class="text-link">View details ›</button>
+      </section>
+    </aside>
+
+    <footer class="statusbar">
+      <div><strong>✓ Programme state</strong><span>Up to date</span></div>
+      <div><strong>Last intelligence sync</strong><span>Today, 08:42</span></div>
+      <div><strong>Active contributors</strong><span>● Claude (Tammy) · ● Perplexity · ● ChatGPT</span></div>
+      <div><strong>Data confidence</strong><span>Medium ▰▰▱▱</span></div>
+      <button>View programme dashboard ↗</button>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
