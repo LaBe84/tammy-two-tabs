@@ -1,10 +1,10 @@
 # Project register
 
-> Keep one row per project. The **canonical version** is the only working version people should treat as current.
+> **As of v1 (Phase 8):** this file tracks **repository/implementation projects only** — work on Tammy herself. It is not a second Live Work Register. Current shared Lifeline programme state (CARE, CRG, Induction, ERO, SAI, PORF-CASE, SMHS — including the Lifeline foundation e-learning build) lives in Notion's **Tammy — Live Work Register**, governed by [`../specifications/shared-programme-intelligence-system.md`](../specifications/shared-programme-intelligence-system.md). Query Notion for current programme status; do not maintain a parallel copy here.
 
 | Project | State | Outcome | Canonical version | Review window | Owner | Next move | Risks / dependencies |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Lifeline foundation e-learning | Decided / building | Six foundation e-learning modules aligned to the six-week counsellor induction programme | v0.1, authoring blueprint | Before service governance sign-off | Tammy Two Tabs / specialist authors | Draft module blueprints and consolidate source checks | Local SOPs, CIMS build details, clinical governance approval |
+| Tammy shared programme-intelligence system | Live | v1: read-only Notion retrieval, structured AI contributions, controlled low-risk write-back, Perplexity ingestion, full regression suite | v1 (Phases 1–8) | N/A — implementation complete, reviewed on request | Tammy Two Tabs | Maintain; no further phases planned | Notion connector availability; workspace query limits |
 
 ## Triage for a new request
 

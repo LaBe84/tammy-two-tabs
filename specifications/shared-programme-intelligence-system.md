@@ -1,6 +1,6 @@
 # Tammy shared programme-intelligence system — v1.0
 
-**Status:** Implementation specification. Phases 1–7 are implemented: this document, read-only Notion retrieval, acceptance tests 1–3, structured proposed contributions (see [`contribution-protocol.md`](contribution-protocol.md)), controlled low-risk write-back (see [`write-back-protocol.md`](write-back-protocol.md)), full-system regression testing (Phase 6 — 17 tests plus all 18 regression invariants, run and reported directly; no repository file, as no code change was required), and Perplexity ingestion (see [`perplexity-ingestion-protocol.md`](perplexity-ingestion-protocol.md) and [`phase-7-acceptance-tests.md`](phase-7-acceptance-tests.md)). Phase 8 (register consolidation/hardening) is not yet built.
+**Status:** v1 complete. All eight phases are implemented — see [`v1-complete.md`](v1-complete.md) for the full implemented/not-implemented summary, [`operating-instructions.md`](operating-instructions.md) for startup/recovery/configuration, and [`phase-8-final-regression.md`](phase-8-final-regression.md) for the final regression and acceptance test. There is no Phase 9 and none is planned.
 
 ## Purpose
 
@@ -134,6 +134,8 @@ Notion being shared memory does not mean every connected AI receives every recor
 | 5 | Implement low-risk write-back (consequential changes remain proposed). | Done — see [`write-back-protocol.md`](write-back-protocol.md) and [`phase-5-acceptance-tests.md`](phase-5-acceptance-tests.md) |
 | 6 | Run human-authority, failure and duplication tests (full-system regression: 17 tests, 18 invariants). | Done — reported directly (no repository file; no code change required) |
 | 7 | Connect/test Perplexity contribution ingestion. | Done — see [`perplexity-ingestion-protocol.md`](perplexity-ingestion-protocol.md) and [`phase-7-acceptance-tests.md`](phase-7-acceptance-tests.md) |
-| 8 | Review `project-register.md` and `decision-log.md` for duplication against Notion. | Not started |
+| 8 | Review `project-register.md` and `decision-log.md` for duplication against Notion; document startup/recovery/configuration; run the final regression and acceptance test; ship the v1 baseline. | Done — see [`v1-complete.md`](v1-complete.md), [`operating-instructions.md`](operating-instructions.md), and [`phase-8-final-regression.md`](phase-8-final-regression.md) |
 
-`project-register.md`, `decision-log.md`, and `version-history.md` are not retired or restructured until Phase 8 explicitly reviews them — write-back is proven (Phases 5–7) but consolidation is deliberately still out of scope.
+`project-register.md` no longer carries a competing, manually-maintained Live Work Register row — it now points to Notion and tracks repository/implementation projects only. `decision-log.md` and `version-history.md` are retained in full, with scope notes distinguishing repository decisions/versions from Notion programme state; no historical entry was deleted or migrated.
+
+This is v1. There is no Phase 9.

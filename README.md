@@ -6,12 +6,10 @@ She holds the operational picture: what is being explored, what people are revie
 
 ## Start here
 
-1. Keep the current work in [`projects/project-register.md`](projects/project-register.md).
-2. Record choices that affect direction in [`decisions/decision-log.md`](decisions/decision-log.md).
-3. Create a short version note whenever a document, model, or implementation materially changes: [`versions/version-history.md`](versions/version-history.md).
-4. Use [`briefings/daily-briefing.md`](briefings/daily-briefing.md) at the beginning of a working session.
-5. Give Tammy [`TAMMY.md`](TAMMY.md) as her governing brief.
-6. Shared programme state (across Tammy, ChatGPT, Perplexity and the human) lives in Notion, governed by [`specifications/shared-programme-intelligence-system.md`](specifications/shared-programme-intelligence-system.md). This repository holds Tammy's own implementation state only.
+1. Give Tammy [`TAMMY.md`](TAMMY.md) as her governing brief. See [`specifications/operating-instructions.md`](specifications/operating-instructions.md) for how to start a session and recover from a stuck one.
+2. Shared programme state (across Tammy, ChatGPT, Perplexity and the human) lives in Notion — the Live Work Register, Source Register, and Overlap Map — governed by [`specifications/shared-programme-intelligence-system.md`](specifications/shared-programme-intelligence-system.md). Query Notion for current work, not this repository.
+3. This repository holds Tammy's own implementation state: [`projects/project-register.md`](projects/project-register.md) for repository/implementation projects, [`decisions/decision-log.md`](decisions/decision-log.md) for architecture/technical/implementation decisions, [`versions/version-history.md`](versions/version-history.md) for version history, and [`briefings/daily-briefing.md`](briefings/daily-briefing.md) as a historical session-briefing snapshot.
+4. **v1 is complete** — see [`specifications/v1-complete.md`](specifications/v1-complete.md) for what's implemented.
 
 ## Project states
 
