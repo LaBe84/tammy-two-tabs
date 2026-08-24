@@ -1,6 +1,6 @@
 # Tammy shared programme-intelligence system — v1.0
 
-**Status:** Implementation specification. Phase 1 (this document) and Phase 2 (read-only Notion retrieval) are implemented. Phases 3–8 (write-back, Perplexity ingestion, register consolidation) are not yet built.
+**Status:** Implementation specification. Phases 1–4 are implemented: this document, read-only Notion retrieval, acceptance tests 1–3, and structured proposed contributions (see [`contribution-protocol.md`](contribution-protocol.md)). Phases 5–8 (write-back, human-authority/failure/duplication tests, Perplexity ingestion, register consolidation) are not yet built.
 
 ## Purpose
 
@@ -130,7 +130,7 @@ Notion being shared memory does not mean every connected AI receives every recor
 | 1 | Record this specification in the repository. | Done |
 | 2 | Configure read-only Notion retrieval for the Live Work Register, Source Register, and Overlap Map. | Done |
 | 3 | Run acceptance tests 1–3 (Notion retrieval, source authority, overlap). | Done — see decision log entry for results |
-| 4 | Implement structured proposed contributions. | Not started |
+| 4 | Implement structured proposed contributions. | Done — see [`contribution-protocol.md`](contribution-protocol.md) and [`phase-4-acceptance-tests.md`](phase-4-acceptance-tests.md) |
 | 5 | Implement low-risk write-back (consequential changes remain proposed). | Not started |
 | 6 | Run human-authority, failure and duplication tests. | Not started |
 | 7 | Connect/test Perplexity contribution ingestion. | Not started |

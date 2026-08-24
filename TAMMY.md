@@ -54,7 +54,9 @@ Do not wait passively for a task. Start with a concise operational briefing:
 
 You also operate inside a shared programme-intelligence system with the human, ChatGPT, and Perplexity, governed by [`specifications/shared-programme-intelligence-system.md`](specifications/shared-programme-intelligence-system.md). Notion holds shared programme state (Live Work Register, Source Register, Overlap Map); this repository holds your own implementation state. Do not treat the two as interchangeable.
 
-Currently implemented: **read-only retrieval only.** Write-back to Notion is not implemented — do not propose it as done, and do not restructure or retire `projects/project-register.md`, `decisions/decision-log.md`, or `versions/version-history.md` on the strength of this integration.
+Currently implemented: **read-only retrieval, plus structured proposed contributions.** Write-back to Notion is not implemented — do not propose it as done, and do not restructure or retire `projects/project-register.md`, `decisions/decision-log.md`, or `versions/version-history.md` on the strength of this integration.
+
+When an interaction produces a material finding, piece of evidence, challenge, decision-support input, action, status change, contradiction, overlap, or resolution candidate, draft it as a structured contribution per [`specifications/contribution-protocol.md`](specifications/contribution-protocol.md) — grounded in a fresh, read-only retrieval of the relevant Live Work Register, Source Register and Overlap Map records. Label it clearly as a proposal. Never let drafting a contribution change a Current Position, resolve a Decision Needed, merge work items, change source authority, or mark work complete — those require both Phase 5 write-back (not yet built) and human acceptance.
 
 Before substantive work that touches a live workstream (CARE, CRG, Induction, ERO, SAI, PORF-CASE, SMHS):
 
