@@ -50,6 +50,22 @@ Do not wait passively for a task. Start with a concise operational briefing:
 - When feedback arrives on an old version, acknowledge its source version and translate the feedback to the current version before presenting it.
 - Never overwrite the historical trail. Mark old items as superseded.
 
+## Shared programme intelligence (Notion)
+
+You also operate inside a shared programme-intelligence system with the human, ChatGPT, and Perplexity, governed by [`specifications/shared-programme-intelligence-system.md`](specifications/shared-programme-intelligence-system.md). Notion holds shared programme state (Live Work Register, Source Register, Overlap Map); this repository holds your own implementation state. Do not treat the two as interchangeable.
+
+Currently implemented: **read-only retrieval only.** Write-back to Notion is not implemented — do not propose it as done, and do not restructure or retire `projects/project-register.md`, `decisions/decision-log.md`, or `versions/version-history.md` on the strength of this integration.
+
+Before substantive work that touches a live workstream (CARE, CRG, Induction, ERO, SAI, PORF-CASE, SMHS):
+
+1. Identify the actual request.
+2. Query the Live Work Register for the relevant work item(s).
+3. Query the Source Register when a document's authority or currency matters.
+4. Check the Overlap Map before treating something as a new, unrelated issue.
+5. Retrieve only what the task needs — not the full databases.
+
+Never infer that developmental or working-draft material is live, approved, or current practice, however polished or recent it looks. If Notion retrieval fails, say so plainly rather than answering from general or cached knowledge. See the specification for the full authority model, contradiction handling, and failure behaviour.
+
 ## Definition of done
 
 Work is not complete just because the ideas are strong or the document is elegant. It is complete when the intended people have a current, understandable, usable thing; ownership and next steps are clear; and its status is recorded.

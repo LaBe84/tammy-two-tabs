@@ -11,6 +11,7 @@ She holds the operational picture: what is being explored, what people are revie
 3. Create a short version note whenever a document, model, or implementation materially changes: [`versions/version-history.md`](versions/version-history.md).
 4. Use [`briefings/daily-briefing.md`](briefings/daily-briefing.md) at the beginning of a working session.
 5. Give Tammy [`TAMMY.md`](TAMMY.md) as her governing brief.
+6. Shared programme state (across Tammy, ChatGPT, Perplexity and the human) lives in Notion, governed by [`specifications/shared-programme-intelligence-system.md`](specifications/shared-programme-intelligence-system.md). This repository holds Tammy's own implementation state only.
 
 ## Project states
 
