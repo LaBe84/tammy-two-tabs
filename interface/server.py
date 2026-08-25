@@ -7,7 +7,10 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 PORT = int(os.environ.get("TAMMY_V2_PORT", "4173"))
-BACKEND_URL = os.environ.get("TAMMY_BACKEND_URL", "http://127.0.0.1:3000/api/tammy")
+# The existing Vinext Tammy runtime on macOS binds to IPv6 loopback (::1).
+# Use the explicit IPv6 literal by default so the bridge reaches the live API
+# reliably instead of depending on localhost/IPv4 resolution order.
+BACKEND_URL = os.environ.get("TAMMY_BACKEND_URL", "http://[::1]:3000/api/tammy")
 ROOT = Path(__file__).resolve().parent
 
 class Handler(SimpleHTTPRequestHandler):
