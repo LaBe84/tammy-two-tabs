@@ -2,34 +2,64 @@
 
 A standalone front-end prototype for the redesigned Tammy workbench.
 
-## Run locally
+## Run locally with live Tammy reasoning
 
-From the repository root:
+Tammy v2 now proxies its centre workbench to the existing Tammy runtime at:
 
-```bash
-python3 -m http.server 4173 --directory interface
+```text
+http://127.0.0.1:3000/api/tammy
 ```
 
-Then open:
+Start the existing Tammy runtime first and leave it running.
+
+Then, from this repository root, run:
+
+```bash
+python3 interface/server.py
+```
+
+Open:
 
 ```text
 http://localhost:4173
 ```
 
-No install step is required.
+The v2 browser calls `/api/tammy` on port 4173. `server.py` forwards that request to the existing Tammy backend on port 3000, avoiding browser cross-origin issues.
 
-## What is implemented
+To use another backend URL:
+
+```bash
+TAMMY_BACKEND_URL=http://127.0.0.1:3000/api/tammy python3 interface/server.py
+```
+
+No Python package install is required.
+
+## What is live
+
+- Analyse / Compare / Challenge / Decide prompts are sent to the existing Tammy runtime.
+- Returned Tammy text is rendered in the central judgement card.
+- API failures are shown explicitly rather than replaced with mock intelligence.
+
+## What remains demo data
+
+The following UI elements are deliberately labelled `DEMO` until they are wired to Notion retrieval:
+
+- recent-work rail and summary counts;
+- evidence/change/contradiction/decision cards;
+- right-hand context rail;
+- source lists, overlap counts and confidence indicator.
+
+They must not be treated as live programme intelligence yet.
+
+## Visual system
 
 - Midnight-blue and soft-gold visual system.
-- Three-column workbench: work navigation, Tammy workspace, live-context rail.
-- Analyse / Compare / Challenge / Decide interaction modes.
-- Recent-work selection.
-- Expandable judgement card.
-- Responsive layout for narrower screens.
+- Three-column workbench: work navigation, Tammy workspace, context rail.
 - Explicit authority/status cues such as `WORKING DRAFT`.
+- Responsive layout for narrower screens.
 
-## Deliberate boundary
+## Architectural boundary
 
-This branch is the interface prototype only. It does **not** yet connect the browser directly to Notion, OpenAI, Perplexity, or the v1 Tammy intelligence layer. The command box therefore demonstrates the interaction model without reading or writing programme state.
+This interface does not replace or weaken the v1 programme-intelligence controls. Source authority, human-decision gates, write-back restrictions, stale-state protection and provenance remain governed by the existing v1 specification.
 
-The next implementation step, after visual approval, is to connect this interface to the existing intelligence layer without changing its source-authority, human-decision, write-back, or provenance controls.
+The next connection step is the right-hand context rail: populate it from bounded Notion retrieval rather than fixture data.
