@@ -54,10 +54,23 @@ No Python package install is required.
 
 - Analyse / Compare / Challenge / Decide prompts are sent to the existing Tammy runtime.
 - Returned Tammy text is rendered in the central judgement card.
+- Structured responses may include distinct, role-based actions for ChatGPT, Claude and Perplexity.
+- Each action is a controlled handoff: `Copy + open` copies a bounded work order and opens the selected model. Tammy does not call Claude or Perplexity APIs directly.
+- Returned model work can be pasted into the action router and sent back to Tammy, which retrieves fresh bounded Notion context before synthesising it.
 - Before each request, the interface queries only the relevant Notion registers and injects the returned programme metadata into Tammy's task.
 - The right context rail displays retrieved work items, source authority and unresolved overlap state.
 - The left rail displays the bounded set of relevant, non-resolved work items.
 - API failures are shown explicitly rather than replaced with mock intelligence.
+
+## Three-model action boundary
+
+- ChatGPT is routed deep project-context, production, clinical/formulation and artefact work.
+- Claude is routed independent clinical/curriculum red-team and exposure-gate challenge.
+- Perplexity is routed external evidence, original-source verification and horizon scanning.
+- Tammy creates an action only where the model adds distinct value; it does not manufacture three pieces of busywork for every request.
+- Work orders include only a task-specific, de-identified context field generated for that model; they do not copy the original request, the full Tammy synthesis or raw Notion page bodies.
+- Opening a model and copying a work order requires an explicit user click. No prompt is sent automatically and no external API credential is stored by this interface.
+- Returned work remains attributed model output. It is not accepted programme state and cannot write to Notion from this interface.
 
 ## Retrieval boundary
 

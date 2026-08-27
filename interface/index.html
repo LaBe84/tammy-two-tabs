@@ -73,6 +73,38 @@
           <button class="insight" type="button"><span>?</span><strong>Decision needed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
         </div>
       </section>
+
+      <section class="model-router" aria-labelledby="modelRouterTitle">
+        <div class="router-head">
+          <div>
+            <div class="eyebrow">↗ THREE-MODEL ACTION ROUTER</div>
+            <h2 id="modelRouterTitle">Controlled work orders</h2>
+            <p>Tammy routes distinct actions by role. You trigger each handoff; no external model receives programme data automatically.</p>
+          </div>
+          <span class="router-boundary">CONTROLLED · NO DIRECT API</span>
+        </div>
+
+        <div id="modelActionGrid" class="model-action-grid" aria-live="polite">
+          <p class="empty-state">Run a Tammy task to prepare bounded actions for ChatGPT, Claude and Perplexity.</p>
+        </div>
+
+        <form id="modelReturnForm" class="model-return-form">
+          <div>
+            <label for="returnSource">Return from</label>
+            <select id="returnSource">
+              <option>ChatGPT</option>
+              <option>Claude</option>
+              <option>Perplexity</option>
+            </select>
+          </div>
+          <label class="return-copy" for="modelReturn">
+            <span>Paste the model’s returned work</span>
+            <textarea id="modelReturn" maxlength="12000" placeholder="Paste the returned analysis, critique or evidence here. Tammy will treat it as an attributed contribution, not accepted programme state."></textarea>
+          </label>
+          <button type="submit">Send return to Tammy</button>
+          <small id="returnStatus">Returns are re-checked against fresh, bounded Notion context before synthesis.</small>
+        </form>
+      </section>
     </main>
 
     <aside class="context-rail">
