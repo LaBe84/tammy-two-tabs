@@ -1,10 +1,111 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Tammy — Programme intelligence</title><link rel="stylesheet" href="styles.css"/></head>
-<body><div class="app-shell">
-<header class="topbar"><div class="brand-group"><div class="mark">T</div><div><div class="brand">TAMMY</div><div class="strap">Lifeline programme intelligence</div></div></div><div class="connections" aria-label="Connections"><span>Runtime <i></i></span><span>Notion <small>not connected</small></span><button class="ghost">Settings</button><button class="avatar" aria-label="Profile">LB</button></div></header>
-<aside class="left-rail"><nav class="summary-nav"><button class="summary-card active"><span class="icon">⌂</span><span><strong>Workbench</strong><small>Live reasoning</small></span></button><button class="summary-card"><span class="icon">☑</span><span><strong>Decisions</strong><small>From live response</small></span></button><button class="summary-card"><span class="icon">△</span><span><strong>Conflicts</strong><small>From live response</small></span></button></nav><div class="section-label">RECENT WORK · DEMO</div><div id="recentWork" class="work-list"><button class="work-item active" data-work="CARE Log & Secondary Assessment"><span>▣</span><div><strong>CARE Log & Secondary Assessment</strong><small>Prototype shortcut</small></div><em>›</em></button><button class="work-item" data-work="Lifeline Induction"><span>◇</span><div><strong>Lifeline Induction</strong><small>Prototype shortcut</small></div></button><button class="work-item" data-work="CRG Criteria Refinement"><span>⚖</span><div><strong>CRG Criteria Refinement</strong><small>Prototype shortcut</small></div></button></div></aside>
-<main class="workspace"><section class="hero"><h1>Good evening, Lee</h1><p>What shall we work on?</p><form id="tammyForm" class="ask-box"><input id="tammyInput" autocomplete="off" placeholder="Ask Tammy anything about Lifeline…"/><button type="submit" aria-label="Ask Tammy">➤</button></form></section><section class="action-grid" aria-label="Modes"><button class="mode active" data-mode="Analyse"><span>⌕</span><strong>Analyse</strong><small>Deep dive into a specific issue</small></button><button class="mode" data-mode="Compare"><span>∞</span><strong>Compare</strong><small>Compare documents, work or options</small></button><button class="mode" data-mode="Challenge"><span>ϟ</span><strong>Challenge</strong><small>Test assumptions, find gaps or risk</small></button><button class="mode" data-mode="Decide"><span>✓</span><strong>Decide</strong><small>Support decisions with evidence</small></button></section><section class="tammy-view"><div class="eyebrow">✦ TAMMY'S VIEW</div><article class="judgement-card"><h2 id="judgementTitle">Ready to analyse.</h2><p id="judgementBody">Ask Tammy a question. Live reasoning is connected; programme context remains unavailable until bounded Notion retrieval is connected.</p><button class="inline-link" id="expandJudgement">View full judgement ›</button></article><div class="insight-grid"><button class="insight"><span>▤</span><strong>Evidence · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button><button class="insight"><span>↗</span><strong>What changed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button><button class="insight"><span>△</span><strong>Contradictions · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button><button class="insight"><span>?</span><strong>Decision needed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button></div></section></main>
-<aside class="context-rail"><div class="context-title">PROGRAMME CONTEXT · NOT CONNECTED</div><section class="context-card"><div class="context-card-head"><strong>▣ Notion retrieval</strong><span>OFF</span></div><p>Live Work Register, Source Register and Overlap Map are deliberately not represented as live until bounded retrieval is connected and verified.</p></section><section class="context-card"><div class="context-card-head"><strong>▤ Source authority</strong><span>SAFE</span></div><p>No source count, authority status or programme-state claim is inferred from the interface.</p></section><section class="context-card"><div class="context-card-head"><strong>? Next wiring boundary</strong><span>1</span></div><p>Connect read-only bounded retrieval, preserve authority metadata, then expose only verified context to the runtime and UI.</p></section></aside>
-<footer class="statusbar"><div><strong>✓ Programme state</strong><span>Interface integration</span></div><div><strong>Live reasoning</strong><span>Connected to Tammy runtime</span></div><div><strong>Programme context</strong><span>Notion retrieval not connected</span></div><div><strong>Data confidence</strong><span>Never inferred from missing context</span></div></footer>
-</div><script src="app.js"></script></body></html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tammy — Programme intelligence</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-group">
+        <div class="mark">T</div>
+        <div>
+          <div class="brand">TAMMY</div>
+          <div class="strap">Lifeline programme intelligence</div>
+        </div>
+      </div>
+      <div class="connections" aria-label="Connections">
+        <span>Runtime <i></i></span>
+        <span>Notion <i id="notionDot" class="connection-dot waiting"></i><small id="notionStatus">checking</small></span>
+        <button class="ghost" type="button">Settings</button>
+        <button class="avatar" type="button" aria-label="Profile">LB</button>
+      </div>
+    </header>
+
+    <aside class="left-rail">
+      <nav class="summary-nav">
+        <button class="summary-card active" type="button">
+          <span class="icon">⌂</span><span><strong>Workbench</strong><small id="workSummary">Loading programme state</small></span>
+        </button>
+        <button class="summary-card" type="button">
+          <span class="icon">☑</span><span><strong>Decisions</strong><small id="decisionSummary">Awaiting retrieval</small></span><b id="decisionCount">—</b>
+        </button>
+        <button class="summary-card" type="button">
+          <span class="icon">△</span><span><strong>Conflicts</strong><small id="overlapSummary">Awaiting retrieval</small></span><b id="overlapCount">—</b>
+        </button>
+      </nav>
+      <div class="section-label" id="recentWorkLabel">RELEVANT WORK · LOADING</div>
+      <div id="recentWork" class="work-list">
+        <p class="empty-state">Retrieving bounded programme context…</p>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <section class="hero">
+        <h1>Good morning, Lee</h1>
+        <p>What shall we work on?</p>
+        <form id="tammyForm" class="ask-box">
+          <input id="tammyInput" autocomplete="off" placeholder="Ask Tammy anything about Lifeline…" />
+          <button type="submit" aria-label="Ask Tammy">➤</button>
+        </form>
+      </section>
+
+      <section class="action-grid" aria-label="Modes">
+        <button class="mode active" type="button" data-mode="Analyse"><span>⌕</span><strong>Analyse</strong><small>Deep dive into a specific issue</small></button>
+        <button class="mode" type="button" data-mode="Compare"><span>∞</span><strong>Compare</strong><small>Compare documents, work or options</small></button>
+        <button class="mode" type="button" data-mode="Challenge"><span>ϟ</span><strong>Challenge</strong><small>Test assumptions, find gaps or risk</small></button>
+        <button class="mode" type="button" data-mode="Decide"><span>✓</span><strong>Decide</strong><small>Support decisions with evidence</small></button>
+      </section>
+
+      <section class="tammy-view">
+        <div class="eyebrow">✦ TAMMY'S VIEW</div>
+        <article class="judgement-card">
+          <h2 id="judgementTitle">Ready to analyse.</h2>
+          <p id="judgementBody">Ask Tammy a question. Relevant programme context will be retrieved read-only before Tammy reasons.</p>
+          <button class="inline-link" id="expandJudgement" type="button">View full judgement ›</button>
+        </article>
+        <div class="insight-grid">
+          <button class="insight" type="button"><span>▤</span><strong>Evidence · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
+          <button class="insight" type="button"><span>↗</span><strong>What changed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
+          <button class="insight" type="button"><span>△</span><strong>Contradictions · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
+          <button class="insight" type="button"><span>?</span><strong>Decision needed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
+        </div>
+      </section>
+    </main>
+
+    <aside class="context-rail">
+      <div class="context-title" id="contextTitle">PROGRAMME CONTEXT · CHECKING</div>
+
+      <section class="context-card" id="contextWorkCard">
+        <div class="context-card-head"><strong>▣ Work items in scope</strong><span id="contextWorkCount">—</span></div>
+        <div id="contextWork"><p class="empty-state">Waiting for retrieval.</p></div>
+      </section>
+
+      <section class="context-card" id="contextSourcesCard">
+        <div class="context-card-head"><strong>▤ Source authority</strong><span id="contextSourceCount">—</span></div>
+        <ul id="contextSources" class="sources"><li class="empty-state">Retrieved only when the task needs evidence or authority.</li></ul>
+      </section>
+
+      <section class="context-card" id="contextOverlapsCard">
+        <div class="context-card-head"><strong>? Overlap and conflicts</strong><span id="contextOverlapCount">—</span></div>
+        <div id="contextOverlaps"><p class="empty-state">Retrieved when the task or workstream requires it.</p></div>
+      </section>
+
+      <section class="context-card boundary-card">
+        <div class="context-card-head"><strong>Bounded retrieval</strong><span>READ ONLY</span></div>
+        <p id="contextScope">No full page content. No write route. No authority inferred from appearance or location.</p>
+      </section>
+    </aside>
+
+    <footer class="statusbar">
+      <div><strong>Programme state</strong><span id="programmeState">Checking Notion</span></div>
+      <div><strong>Live reasoning</strong><span>Connected through local Tammy runtime</span></div>
+      <div><strong>Programme context</strong><span id="contextState">Bounded read-only retrieval</span></div>
+      <div><strong>Authority rule</strong><span>Draft never becomes policy by citation</span></div>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
