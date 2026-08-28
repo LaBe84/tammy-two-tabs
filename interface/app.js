@@ -27,6 +27,44 @@ let lastStructured = null;
 let lastContext = null;
 let lastRequest = '';
 
+async function loadRepositoryState() {
+  try {
+    const response = await fetch('/api/state', { cache: 'no-store' });
+    if (!response.ok) throw new Error('state unavailable');
+    const state = await response.json();
+    const tasks = list(state.tasks);
+    recentWorkLabel.textContent = 'REPOSITORY WORK · LIVE';
+    recentWork.replaceChildren();
+    if (!tasks.length) {
+      recentWork.appendChild(element('p', 'empty-state', 'No repository tasks recorded yet.'));
+      return;
+    }
+    tasks.slice(0, 6).forEach(task => addWorkRow(recentWork, { 'Work Item': task.title, Status: task.status, Authority: task.priority }));
+  } catch (_) {
+    recentWorkLabel.textContent = 'REPOSITORY WORK · UNAVAILABLE';
+    recentWork.replaceChildren(element('p', 'empty-state', 'Persistent work state is unavailable. No demo state substituted.'));
+  }
+}
+
+async function loadBuildStatus() {
+  const state = document.getElementById('buildState');
+  const action = document.getElementById('buildAction');
+  const meta = document.getElementById('buildMeta');
+  try {
+    const response = await fetch('/api/status', { cache: 'no-store' });
+    if (!response.ok) throw new Error('status unavailable');
+    const payload = await response.json();
+    const status = payload.status || {};
+    state.textContent = String(status.state || 'unknown').replace('_', ' ');
+    action.textContent = status.current_action || 'No current action recorded.';
+    const blockers = list(status.blockers);
+    const decisions = list(status.decisions_required);
+    meta.textContent = blockers.length ? `Blocked: ${blockers.join(' · ')}` : decisions.length ? `Decision required: ${decisions.join(' · ')}` : `Last completed: ${status.last_completed || 'not recorded'}`;
+  } catch (_) {
+    state.textContent = 'unavailable'; action.textContent = 'Persistent progress is unavailable. No progress is inferred.'; meta.textContent = 'Check the state backend.';
+  }
+}
+
 const modelRoles = {
   ChatGPT: {
     role: 'Deep project-context, production lead, clinical/formulation reasoning and artefact development.',
@@ -324,6 +362,9 @@ async function retrieveContext(query, mode) {
   renderContext(data);
   return data;
 }
+
+loadRepositoryState();
+loadBuildStatus();
 
 function contextForPrompt(context) {
   if (!context) {

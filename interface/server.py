@@ -14,6 +14,7 @@ from pathlib import Path
 
 PORT = int(os.environ.get("TAMMY_V2_PORT", "4173"))
 BACKEND_URL = os.environ.get("TAMMY_BACKEND_URL", "http://127.0.0.1:3000/api/tammy")
+STATE_BACKEND_URL = os.environ.get("TAMMY_STATE_BACKEND_URL", "http://127.0.0.1:3001")
 ROOT = Path(__file__).resolve().parent
 
 NOTION_API_BASE = os.environ.get("TAMMY_NOTION_API_BASE", "https://api.notion.com/v1").rstrip("/")
@@ -334,6 +335,14 @@ class Handler(SimpleHTTPRequestHandler):
         return json.loads(self.rfile.read(length) or b"{}")
 
     def do_GET(self):
+        if self.path == "/api/state" or self.path.startswith("/api/where-are-we") or self.path == "/api/status":
+            target = f"{STATE_BACKEND_URL}{self.path}"
+            try:
+                with urllib.request.urlopen(target, timeout=10) as upstream:
+                    data = upstream.read(); self.send_response(upstream.status); self.send_header("Content-Type", "application/json"); self.send_header("Content-Length", str(len(data))); self.end_headers(); self.wfile.write(data)
+            except Exception as exc:
+                self.send_json(503, {"error": f"Tammy state backend unavailable at {STATE_BACKEND_URL}: {exc}", "state": "UNAVAILABLE"})
+            return
         if self.path == "/api/context/health":
             self.send_json(200, {
                 "configured": bool(NOTION_TOKEN),
