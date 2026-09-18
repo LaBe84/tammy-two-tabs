@@ -1,0 +1,7 @@
+{
+  "name": "Tammy Two Tabs",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "postCreateCommand": "python -m unittest discover -s backend/tests -v && python -m unittest discover -s interface/tests -v",
+  "forwardPorts": [3001, 4173, 3000],
+  "customizations": {"vscode": {"extensions": ["ms-python.python"]}}
+}

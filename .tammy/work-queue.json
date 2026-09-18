@@ -1,0 +1,7 @@
+{
+  "items": [
+    {"id": "context-bridge", "title": "Connect repository and bounded Notion context", "status": "in_progress", "priority": "now", "human_decision_required": false},
+    {"id": "gateway", "title": "Implement provider-neutral model gateway", "status": "queued", "priority": "next", "human_decision_required": false},
+    {"id": "human-gates", "title": "Expose consequential decisions for human sign-off", "status": "queued", "priority": "next", "human_decision_required": true}
+  ]
+}

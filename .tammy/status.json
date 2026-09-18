@@ -1,0 +1,11 @@
+{
+  "project": "Tammy Two Tabs",
+  "phase": "Phase 3: provenance-aware context bridge",
+  "state": "in_progress",
+  "current_action": "Add persistent progress, work queue and control status endpoint",
+  "last_completed": "Persistent SQLite state, repository Markdown indexing and grounded work rail",
+  "tests": {"status": "passing", "last_run": "2026-08-28", "passed": 11, "failed": 0},
+  "blockers": [],
+  "decisions_required": [],
+  "last_updated": "2026-08-28T16:52:34Z"
+}
