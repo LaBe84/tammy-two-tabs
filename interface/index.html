@@ -17,25 +17,24 @@
         </div>
       </div>
       <div class="connections" aria-label="Connections">
-        <span>Runtime <i></i></span>
+        <span>Runtime <small id="runtimeStatus">Not checked</small></span>
         <span>Notion <i id="notionDot" class="connection-dot waiting"></i><small id="notionStatus">checking</small></span>
-        <button class="ghost" type="button">Settings</button>
-        <button class="avatar" type="button" aria-label="Profile">LB</button>
+        <span class="avatar" aria-label="Lee’s workspace">LB</span>
       </div>
     </header>
 
     <aside class="left-rail">
-      <nav class="summary-nav">
-        <button class="summary-card active" type="button">
+      <section class="summary-nav" aria-label="Programme summaries">
+        <div class="summary-card active">
           <span class="icon">⌂</span><span><strong>Workbench</strong><small id="workSummary">Loading programme state</small></span>
-        </button>
-        <button class="summary-card" type="button">
+        </div>
+        <div class="summary-card">
           <span class="icon">☑</span><span><strong>Decisions</strong><small id="decisionSummary">Awaiting retrieval</small></span><b id="decisionCount">—</b>
-        </button>
-        <button class="summary-card" type="button">
+        </div>
+        <div class="summary-card">
           <span class="icon">△</span><span><strong>Conflicts</strong><small id="overlapSummary">Awaiting retrieval</small></span><b id="overlapCount">—</b>
-        </button>
-      </nav>
+        </div>
+      </section>
       <div class="section-label" id="recentWorkLabel">RELEVANT WORK · LOADING</div>
       <section class="context-card control-status" aria-label="Tammy build status">
         <div class="context-card-head"><strong>⚙ BUILD STATUS</strong><span id="buildState">checking</span></div>
@@ -71,10 +70,10 @@
           <button class="inline-link" id="expandJudgement" type="button">Show detail</button>
         </article>
         <div class="insight-grid">
-          <button class="insight" type="button"><span>▤</span><strong>Evidence · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
-          <button class="insight" type="button"><span>↗</span><strong>What changed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
-          <button class="insight" type="button"><span>△</span><strong>Contradictions · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
-          <button class="insight" type="button"><span>?</span><strong>Decision needed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></button>
+          <details class="insight"><summary><span>▤</span><strong>Evidence · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></summary><ul class="insight-items"></ul></details>
+          <details class="insight"><summary><span>↗</span><strong>What changed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></summary><ul class="insight-items"></ul></details>
+          <details class="insight"><summary><span>△</span><strong>Contradictions · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></summary><ul class="insight-items"></ul></details>
+          <details class="insight"><summary><span>?</span><strong>Decision needed · WAITING</strong><small>Awaiting live response</small><em>Structured runtime field</em></summary><ul class="insight-items"></ul></details>
         </div>
       </section>
 
@@ -137,7 +136,7 @@
 
     <footer class="statusbar">
       <div><strong>Programme state</strong><span id="programmeState">Checking Notion</span></div>
-      <div><strong>Live reasoning</strong><span>Connected through local Tammy runtime</span></div>
+      <div><strong>Live reasoning</strong><span id="reasoningStatus">Not checked</span></div>
       <div><strong>Programme context</strong><span id="contextState">Bounded read-only retrieval</span></div>
       <div><strong>Authority rule</strong><span>Draft never becomes policy by citation</span></div>
     </footer>
