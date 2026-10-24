@@ -59,7 +59,7 @@ async function loadBuildStatus() {
     action.textContent = status.current_action || 'No current action recorded.';
     const blockers = list(status.blockers);
     const decisions = list(status.decisions_required);
-    meta.textContent = blockers.length ? `Blocked: ${blockers.join(' · ')}` : decisions.length ? `Decision required: ${decisions.join(' · ')}` : `Last completed: ${status.last_completed || 'not recorded'}`;
+    meta.textContent = `Repository snapshot: ${status.last_updated || 'date not recorded'} · ` + (blockers.length ? `Blocked: ${blockers.join(' · ')}` : decisions.length ? `Decision required: ${decisions.join(' · ')}` : `Last completed: ${status.last_completed || 'not recorded'}`);
   } catch (_) {
     state.textContent = 'unavailable'; action.textContent = 'Persistent progress is unavailable. No progress is inferred.'; meta.textContent = 'Check the state backend.';
   }
