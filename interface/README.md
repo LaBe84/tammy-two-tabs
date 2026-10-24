@@ -50,9 +50,9 @@ TAMMY_BACKEND_URL=http://127.0.0.1:3000/api/tammy python3 interface/server.py
 
 No Python package install is required.
 
-## What is live
+## Implemented routes and their dependencies
 
-- Analyse / Compare / Challenge / Decide prompts are sent to the existing Tammy runtime.
+- Analyse / Compare / Challenge / Decide prompts are routed to the separately running Tammy runtime. This repository does not contain or start that reasoning service; its availability must be verified at runtime.
 - Returned Tammy text is rendered in the central judgement card.
 - Structured responses may include distinct, role-based actions for ChatGPT, Claude and Perplexity.
 - Each action is a controlled handoff: `Copy + open` copies a bounded work order and opens the selected model. Tammy does not call Claude or Perplexity APIs directly.
@@ -109,3 +109,12 @@ curl -sS -X POST http://127.0.0.1:4173/api/context \
 This interface does not replace or weaken the v1 programme-intelligence controls. Source authority, human-decision gates, write-back restrictions, stale-state protection and provenance remain governed by the existing v1 specification.
 
 Presence in Notion is not approval. The runtime receives every retrieved record with its explicit `Authority` or `Human Decision` field, and its prompt requires those states to be preserved.
+
+## Reliability fixes, 24 October 2026
+
+- Removed inert Settings/Profile controls. Workbench/Decisions/Conflicts summaries are display panels, not navigation buttons.
+- Evidence, changes, contradictions and decisions expand to show the returned entries. Changing mode clears old results and work orders.
+- Runtime starts as Not checked. Request in progress, Reply received and Last request failed describe observed requests, not ongoing connectivity.
+- The checked-in repository build status is a dated snapshot, not a live execution monitor.
+- Specialist work orders remain copy-and-open handoffs. No specialist is dispatched automatically.
+- The documentation describes implemented routes and intended operating rules; it is not proof of a complete, verified deployment.
