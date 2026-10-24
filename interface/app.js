@@ -59,7 +59,7 @@ async function loadBuildStatus() {
     action.textContent = status.current_action || 'No current action recorded.';
     const blockers = list(status.blockers);
     const decisions = list(status.decisions_required);
-    meta.textContent = blockers.length ? `Blocked: ${blockers.join(' · ')}` : decisions.length ? `Decision required: ${decisions.join(' · ')}` : `Last completed: ${status.last_completed || 'not recorded'}`;
+    meta.textContent = `Repository snapshot: ${status.last_updated || 'date not recorded'} · ` + (blockers.length ? `Blocked: ${blockers.join(' · ')}` : decisions.length ? `Decision required: ${decisions.join(' · ')}` : `Last completed: ${status.last_completed || 'not recorded'}`);
   } catch (_) {
     state.textContent = 'unavailable'; action.textContent = 'Persistent progress is unavailable. No progress is inferred.'; meta.textContent = 'Check the state backend.';
   }
@@ -129,6 +129,8 @@ function setNotionState(state, text) {
 }
 
 function renderInsight(button, label, items, emptyText) {
+  const listNode=button.querySelector('.insight-items');
+  listNode.replaceChildren(...(items.length?items:[emptyText]).map(item=>element('li','',typeof item==='string'?item:JSON.stringify(item))));
   button.querySelector('strong').textContent = label;
   button.querySelector('small').textContent = items.length
     ? `${items.length} item${items.length === 1 ? '' : 's'} identified`
@@ -245,6 +247,7 @@ function resetLivePanels() {
     button.querySelector('strong').textContent = labels[index];
     button.querySelector('small').textContent = 'Awaiting live response';
     button.classList.remove('warn');
+    button.querySelector('.insight-items').replaceChildren(element('li','','Awaiting a response.'));
   });
 }
 
@@ -384,12 +387,16 @@ modes.forEach(button => {
     button.classList.add('active');
     activeMode = button.dataset.mode;
     lastStructured = null;
+    resetLivePanels();
+    resetModelActions();
     title.textContent = responses[activeMode].title;
     body.textContent = responses[activeMode].body;
     expand.dataset.expanded = 'false';
     expand.textContent = 'View full judgement ›';
   });
 });
+
+function setRuntimeState(text){document.getElementById('runtimeStatus').textContent=text;document.getElementById('reasoningStatus').textContent=text;}
 
 async function runTammyRequest(request, mode = activeMode, setRootRequest = true) {
   if (!request) return false;
@@ -399,6 +406,7 @@ async function runTammyRequest(request, mode = activeMode, setRootRequest = true
   if (setRootRequest) lastRequest = request;
 
   setBusy(true);
+  setRuntimeState('Request in progress');
   resetLivePanels();
   resetModelActions();
   title.textContent = request;
@@ -446,10 +454,12 @@ async function runTammyRequest(request, mode = activeMode, setRootRequest = true
       });
       modelActionGrid.replaceChildren(element('p', 'empty-state', 'The runtime returned unstructured text, so Tammy could not prepare safe model work orders.'));
     }
+    setRuntimeState(`Reply received ${new Date().toLocaleTimeString('en-GB')}`);
     completed = true;
     input.value = '';
   } catch (error) {
     lastStructured = null;
+    setRuntimeState('Last request failed');
     title.textContent = 'Live runtime unavailable';
     body.textContent = error.message;
   } finally {
